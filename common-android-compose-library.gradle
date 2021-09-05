@@ -1,0 +1,25 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+android {
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.ComposeVersion
+    }
+}
+
+dependencies {
+    implementation(ComposeLibraries.ComposeUI)
+    implementation(ComposeLibraries.ComposeMaterial)
+    implementation(ComposeLibraries.ComposeUITooling)
+    implementation(ComposeLibraries.ComposeFoundation)
+    implementation(ComposeLibraries.ComposeLiveData)
+    implementation(ComposeLibraries.ComposeMaterialIconsCore)
+    implementation(ComposeLibraries.ComposeMaterialIconsExtended)
+    implementation(ComposeLibraries.ActivityCompose)
+    implementation(ComposeLibraries.ComposeNavigation)
+    implementation(KoinLibraries.KoinJetpackCompose)
+    androidTestImplementation(AndroidTestLibraries.ComposeUIJUnit4)
+}

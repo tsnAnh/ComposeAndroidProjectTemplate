@@ -1,0 +1,25 @@
+object Versions {
+    const val KotlinVersion = "1.5.21"
+    const val CoroutinesVersion = "1.5.0"
+    const val KtorVersion = "1.6.1"
+    const val SerializationJson = "1.2.2"
+    const val KoinVersion = "3.1.2"
+    const val BuildToolsVersion = "30.0.3"
+    const val AndroidGradlePluginVersion = "7.0.1"
+
+    const val MaterialVersion = "1.4.0"
+    const val AppCompat = "1.3.0"
+    const val ComposeVersion = "1.0.1"
+    const val CoroutinesAndroidVersion = "1.5.0"
+    const val AndroidXCoreVersion = "1.6.0"
+    const val TimberVersion = "4.7.1"
+    const val ActivityComposeVersion = "1.3.0"
+    const val ComposeNavigation = "2.4.0-alpha06"
+    const val CoreSplashScreenVersion = "1.0.0-alpha01"
+    const val DetektVersion = "1.18.1"
+    const val KtlintVersion = "10.1.0"
+
+    const val AndroidJUnit4 = "1.1.3"
+    const val Espresso = "3.4.0"
+    const val JUnit4 = "4.13"
+}
