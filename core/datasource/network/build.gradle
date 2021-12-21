@@ -1,0 +1,22 @@
+plugins {
+    id("kotlinx-serialization")
+}
+
+apply {
+    from("$rootDir/common-android-library.gradle")
+}
+
+dependencies {
+    // Add additional dependencies here
+    api project(":common:models")
+    api project(":common:extensions")
+    api project(":common:utils")
+    implementation Network.Retrofit
+    implementation Network.OkHttp
+    implementation Network.OkHttpLoggingInterceptor
+    implementation KotlinLibraries.SerializationJson
+    implementation Network.KotlinSerializationRetrofitConverter
+    api Arrow.ArrowCore
+    api Arrow.ArrowCoroutines
+    api Arrow.ArrowSTM
+}

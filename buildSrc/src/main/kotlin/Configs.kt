@@ -1,6 +1,6 @@
 object Configs {
     const val GroupId = "dev.tsnanh"
-    const val ApplicationId = "dev.tsnanh.android.projecttemplate"
+    const val ApplicationId = "dev.tsnanh.android.template"
     const val DebugVersionName = "0.1.0"
     const val ReleaseVersionName = "1.0.0"
     const val CompileSdkVersion = 31

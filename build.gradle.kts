@@ -1,4 +1,4 @@
-buildscript {
+@Suppress("JcenterRepositoryObsolete", "DEPRECATION") buildscript {
     repositories {
         gradlePluginPortal()
         jcenter()
@@ -8,6 +8,9 @@ buildscript {
     dependencies {
         classpath(ProjectPlugins.AndroidGradlePlugin)
         classpath(ProjectPlugins.KotlinGradlePlugin)
+        classpath(ProjectPlugins.KotlinSerializationPlugin)
+        classpath(ProjectPlugins.GoogleServices)
+        classpath(ProjectPlugins.Crashlytics)
     }
 }
 

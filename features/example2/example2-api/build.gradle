@@ -1,0 +1,5 @@
+apply from: "$rootDir/common-android-compose-library.gradle"
+
+dependencies {
+    implementation project(':core:navigation')
+}
