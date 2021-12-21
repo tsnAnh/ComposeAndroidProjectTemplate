@@ -22,7 +22,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
-        freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+        freeCompilerArgs = ['-Xopt-in=kotlin.RequiresOptIn']
     }
 
     packagingOptions {
@@ -45,10 +45,9 @@ dependencies {
     implementation AndroidSupportLibraries.AppCompat
     implementation KotlinLibraries.CoroutinesCore
     implementation KotlinLibraries.CoroutinesAndroid
-    implementation KotlinLibraries.KoinCore
-    implementation TestLibraries.KoinTest
-    implementation TestLibraries.KoinJUnit4
-    implementation KoinLibraries.KoinAndroid
+    implementation DaggerLibraries.Dagger
+    implementation DaggerLibraries.DaggerAndroid
+    kapt DaggerLibraries.DaggerCompiler
     testImplementation KotlinLibraries.CoroutinesTest
     implementation AndroidSupportLibraries.Timber
     testImplementation TestLibraries.jUnit4

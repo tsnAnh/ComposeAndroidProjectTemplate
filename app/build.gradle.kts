@@ -1,3 +1,5 @@
+import variants.ApplicationVariantsPlugin
+
 plugins {
     id(Plugins.AndroidApplication)
     kotlin(Plugins.KotlinAndroid)
@@ -5,7 +7,11 @@ plugins {
     id(Plugins.KotlinParcelize)
     id(Plugins.Detekt)
     id(Plugins.Ktlint)
+    id(Plugins.GoogleServices)
+    id(Plugins.Crashlytics)
 }
+
+apply<ApplicationVariantsPlugin>()
 
 android {
     buildToolsVersion = Versions.BuildToolsVersion
@@ -16,15 +22,13 @@ android {
         applicationId = Configs.ApplicationId
         minSdk = Configs.MinSdkVersion
         targetSdk = Configs.TargetSdkVersion
-        versionCode = Configs.ReleaseVersionCode
-        versionName = Configs.ReleaseVersionName
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         getByName(BuildTypes.Release) {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,16 +47,17 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
         allWarningsAsErrors = true
         jvmTarget = "11"
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.ComposeVersion
+        kotlinCompilerExtensionVersion = Versions.ComposeCompilerVersion
     }
 
     packagingOptions {
@@ -71,14 +76,20 @@ android {
         exclude("META-INF/AL2.0")
         exclude("META-INF/*.kotlin_module")
     }
+}
 
-    lint {
-        isWarningsAsErrors = true
-        isAbortOnError = true
-    }
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
+    implementation(project(":features:example:example-impl"))
+    implementation(project(":features:example2:example2-impl"))
+    implementation(project(":core:navigation"))
+    implementation(project(":common:utils"))
+
+    coreLibraryDesugaring(AndroidSupportLibraries.CoreLibraryDesgaring)
+
     implementation(AndroidSupportLibraries.Material)
     implementation(AndroidSupportLibraries.AppCompat)
     implementation(ComposeLibraries.ComposeUI)
@@ -99,12 +110,12 @@ dependencies {
     implementation(AndroidSupportLibraries.Timber)
     implementation(ComposeLibraries.ActivityCompose)
     implementation(ComposeLibraries.ComposeNavigation)
-    implementation(KotlinLibraries.KoinCore)
-    implementation(TestLibraries.KoinTest)
-    implementation(TestLibraries.KoinJUnit4)
-    implementation(KoinLibraries.KoinAndroid)
-    implementation(KoinLibraries.KoinJetpackCompose)
     implementation(AndroidSupportLibraries.CoreSplashScreen)
+    implementation(DaggerLibraries.Dagger)
+    implementation(DaggerLibraries.DaggerAndroid)
+    kapt(DaggerLibraries.DaggerCompiler)
+    implementation(Accompanist.NavigationMaterial)
+    implementation(Accompanist.NavigationAnimation)
     // UI Tests
     androidTestImplementation(AndroidTestLibraries.ComposeUIJUnit4)
     androidTestImplementation(AndroidTestLibraries.AndroidJUnit4)

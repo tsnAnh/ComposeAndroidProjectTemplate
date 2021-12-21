@@ -6,20 +6,26 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion Versions.ComposeVersion
+        kotlinCompilerExtensionVersion Versions.ComposeCompilerVersion
     }
 }
 
 dependencies {
-    implementation(ComposeLibraries.ComposeUI)
-    implementation(ComposeLibraries.ComposeMaterial)
-    implementation(ComposeLibraries.ComposeUITooling)
-    implementation(ComposeLibraries.ComposeFoundation)
-    implementation(ComposeLibraries.ComposeLiveData)
-    implementation(ComposeLibraries.ComposeMaterialIconsCore)
-    implementation(ComposeLibraries.ComposeMaterialIconsExtended)
-    implementation(ComposeLibraries.ActivityCompose)
-    implementation(ComposeLibraries.ComposeNavigation)
-    implementation(KoinLibraries.KoinJetpackCompose)
-    androidTestImplementation(AndroidTestLibraries.ComposeUIJUnit4)
+    implementation ComposeLibraries.ComposeUI
+    implementation ComposeLibraries.ComposeMaterial
+    implementation ComposeLibraries.ComposeUITooling
+    implementation ComposeLibraries.ComposeFoundation
+    implementation ComposeLibraries.ComposeLiveData
+    implementation ComposeLibraries.ComposeMaterialIconsCore
+    implementation ComposeLibraries.ComposeMaterialIconsExtended
+    implementation ComposeLibraries.ActivityCompose
+    implementation ComposeLibraries.ComposeNavigation
+    implementation Accompanist.Insets
+    implementation Accompanist.Permission
+    implementation Accompanist.SystemUiController
+    implementation Accompanist.DrawablePainter
+    implementation Accompanist.NavigationAnimation
+    implementation Accompanist.NavigationMaterial
+    implementation Accompanist.Placeholder
+    androidTestImplementation AndroidTestLibraries.ComposeUIJUnit4
 }
